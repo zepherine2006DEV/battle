@@ -26,5 +26,10 @@ class Battle < Sinatra::Base
     erb :play
   end
 
+  get '/attack' do
+  p "in attack method"
+  erb :attack_confirmed
+  end
+
 run! if app_file == $0
 end

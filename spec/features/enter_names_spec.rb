@@ -6,10 +6,7 @@
 
 feature 'User can enter their name' do
   scenario 'Name is displayed' do
-  visit '/'
-  fill_in('Name_1', with: 'Godzilla')
-  fill_in('Name_2', with: 'Godzuki')
-  click_button('Submit')
+  sign_in_and_play
   expect(page).to have_content("Godzilla")
   expect(page).to have_content("Godzuki")
   end

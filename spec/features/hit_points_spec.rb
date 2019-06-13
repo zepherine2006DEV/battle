@@ -4,11 +4,8 @@
 
 feature 'Displays Hit Points' do
     scenario 'Player 2s Hit Points Displayed' do
-
-    visit '/'
-    fill_in('Name_1', with: 'Godzilla')
-    fill_in('Name_2', with: 'Godzuki')
-    click_button('Submit')
+    sign_in_and_play
+ 
     expect(page).to have_content("HP 100")
 
     end

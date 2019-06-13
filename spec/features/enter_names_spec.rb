@@ -10,6 +10,7 @@ feature 'User can enter their name' do
   fill_in('Name_1', with: 'Godzilla')
   fill_in('Name_2', with: 'Godzuki')
   click_button('Submit')
-  expect(page).to have_text("Godzilla vs Godzuki")
+  expect(page).to have_content("Godzilla")
+  expect(page).to have_content("Godzuki")
   end
 end

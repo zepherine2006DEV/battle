@@ -1,4 +1,5 @@
 require 'sinatra/base'
+#require 'player'
 
 class Battle < Sinatra::Base
 
@@ -9,18 +10,25 @@ class Battle < Sinatra::Base
   end
 
   post '/names' do
-    @player_1 = params["player_name_1"]
-    @player_2 = params["player_name_2"]
+    
+    $player1 = Player.new(params["player_name_1"])
+    $player2 = Player.new(params["player_name_2"])
 
-    session[:name1] = @player_1
-    session[:name2] = @player_2
-   
+    p "*** $player1"
+    p $player1
+
+    ## store it globally to make it available later
+
     redirect "/play"
   end
 
   get '/play' do
-    @player_1 = session[:name1]
-    @player_2 = session[:name2]
+   
+    p "*** $player1"
+    p $player1
+
+    @player_1 = $player1 ## now comes from the model, in the global
+    @player_2 = $player2 ## ditto
     @player_1_hp = 100
     @player_2_hp = 100
     erb :play
